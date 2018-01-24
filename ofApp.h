@@ -1,5 +1,5 @@
 /************************************************************
-I need to keep my app in front of all other windows on the screen, but not steal focus from other windows.
+■I need to keep my app in front of all other windows on the screen, but not steal focus from other windows.
 	https://forum.openframeworks.cc/t/floating-app-without-focus-osx/15030
 	
 	contents
@@ -28,7 +28,7 @@ I need to keep my app in front of all other windows on the screen, but not steal
 						}else{
 							[myOFwindow setLevel:NSNormalWindowLevel];
 						}
-			s		}
+					}
 				}
 			#endif
 			}
@@ -42,8 +42,62 @@ I need to keep my app in front of all other windows on the screen, but not steal
 			ofEnableFloating(false);
 
 
-Xcode WindowLevelの順序
+■Xcode WindowLevelの順序
 	http://www.rinpa.com/blog/archives/2005/03/xcode_windowlev.html
+	
+	contents
+		矢印の上にある物ほど上に表示される 
+		矢印がない物はアクティブになった物の方が上に表示された
+		
+		kCGMaximumWindowLevel 
+		↑ 
+		kCGCursorWindowLevel 
+		↑ 
+		kCGScreenSaverWindowLevel 
+		↑ 
+		kCGDraggingWindowLevel 
+		↑ 
+		kCGHelpWindowLevel 
+		kCGOverlayWindowLevel 
+		↑ 
+		kCGPopUpMenuWindowLevel 
+		kCGBackstopMenuLevel 
+		↑ 
+		kCGStatusWindowLevel 
+		↑ 
+		kCGMainMenuWindowLevel 
+		↑ 
+		kCGDockWindowLevel 
+		↑ 
+		kCGUtilityWindowLevel 
+		↑ 
+		kCGModalPanelWindowLevel 
+		↑ 
+		kCGFloatingWindowLevel 
+		kCGTornOffMenuWindowLevel 
+		↑ 
+		kCGNormalWindowLevel 
+		kCGBaseWindowLevel 
+		kCGAssistiveTechHighWindowLevel 
+		↑ 
+		kCGDesktopIconWindowLevel 
+		↑ 
+		kCGDesktopWindowLevel 
+		↑ 
+		kCGMinimumWindowLevel
+
+
+■foreground window on unity
+	Conclusion
+		macでは不可らしい。
+		伊勢丹での経験から、通知系を全てoffにし、最後にFullScreenで起動すれば大丈夫なので、大概の場合はこれで行こう。
+		万全を期すなら、unityはwindowsで実装するか、
+			unity -syphon-> oF
+		として、ここで示す例に従いoF appのwindowを最前面にすることで対応.
+		
+	
+	windowsならできるらしい
+		https://stackoverflow.com/questions/29092145/any-way-to-bring-unity3d-to-the-foreground
 ************************************************************/
 #pragma once
 
